@@ -100,14 +100,13 @@ y        = create_mock_data()
 def fTAR(theta):
     target_dist = 0.
 
-    #target_dist = np.sum(theta[:][0] * np.exp(-(x - theta[:][1])**2/(2*theta[:][2]**2), axis = 0))
     for gauss in range(NUM_GAUSS):
         amp=theta[gauss][0]
         mu=theta[gauss][1]
         sigma=theta[gauss][2]
         
         single_gauss = gauss_function(amp,mu,sigma)
-        target_dist +=  single_gauss # theta = [[amp0,mu0,sigma0],[amp1,mu1,sigma1],etc.]
+        target_dist +=  single_gauss 
         
     return target_dist
 
@@ -129,8 +128,6 @@ def box_muller(num_vals):
         X1 = ((-2.*np.log(U1))**(1/2))*np.cos(2*np.pi*U2)
         X2 = ((-2.*np.log(U1))**(1/2))*np.sin(2*np.pi*U2)
         x_r[i] = X1
-        #if (len(x_r) != num_vals):
-        #   x_r[i] = X2
 
     return x_r
 
@@ -140,9 +137,9 @@ def theta_chi2(N,y,theta):
     chi2 = 0.
 
     for i in range(0,N):
-        chi2 += np.log(1./np.sqrt(2*np.pi))#*sy[i]*sy[i])
-        chi2 += -1.*((y[i]-fTAR(theta)[i])**2)#*sy[i]*sy[i]))
-
+        chi2 += np.log(1./np.sqrt(2*np.pi))
+        chi2 += -1.*((y[i]-fTAR(theta)[i])**2)
+        
     return chi2 #- np.log(np.sqrt(8 * np.pi))
 
 
