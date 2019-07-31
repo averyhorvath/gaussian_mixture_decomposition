@@ -341,8 +341,8 @@ def main():
     plt.xlabel("x")
     plt.legend()
     plt.savefig("./gauss_images/%s_gaussians/peaks.jpg" % (NUM_GAUSS),dpi = 300,  bbox_inches="tight")
-    plt.show()
-    raise ValueError
+    #plt.show()
+    #raise ValueError
     #plt.bar(bins,y_binned,color='darkblue',edgecolor='.75',zorder=10)
     #plt.savefig("./gauss_images/%s_gaussians/peaks_vs_derivative.jpg" % (NUM_GAUSS),dpi = 300,  bbox_inches="tight")
 
